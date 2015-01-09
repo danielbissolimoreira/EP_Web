@@ -23,3 +23,18 @@ ADD PRIMARY KEY (DIA,HORA,EMAIL);
 
 ALTER TABLE Agenda
 ADD FOREIGN KEY R_3 (EMAIL) REFERENCES Pessoa (EMAIL);
+
+CREATE TABLE IF NOT EXISTS `horarios` (
+  `hora` time NOT NULL
+);
+
+INSERT INTO `horarios` (`hora`) VALUES
+('08:00:00'),
+('09:00:00'),
+('10:00:00'),
+('11:00:00'),
+('12:00:00'),
+('13:00:00'),
+('15:00:00'),
+('16:00:00'),
+('17:00:00'); 

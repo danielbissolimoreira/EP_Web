@@ -3,7 +3,7 @@ session_start();
 $_SESSION['username'] = $_POST['user'];
 $_SESSION['userpass'] = $_POST['pass'];
 $_SESSION['authuser'] = 0;
-$connect = mysql_connect("localhost", "admin", "Y6vKryh49tZVqBcw")
+$connect = mysql_connect("localhost", "root", "")
 or die("Hey loser, check your server connection.");
 //Check if pwd is correct
 mysql_select_db("test");
@@ -31,6 +31,8 @@ else {
   <body>
     <div id="main">
       <h1>Agendamento</h1>
+      <form action="agenda_process.php" method="post">
+      <?php echo "<input type = hidden name = id value = $_SESSION[username]>" ?>   
 	  <table>
 	  <tr>	
 			<td width="15%">Selecione um dia:</td>
@@ -38,7 +40,7 @@ else {
 				<?php
 				$num_of_days = cal_days_in_month(CAL_GREGORIAN, date("d"), date("Y")); // 31
 				?>
-				<select name="horarios">
+				<select name="data">
 				
 				<option value="" selected><?php echo date("j")+1; ?></option><?php
 					for ($day=date("j")+2; $day <= $num_of_days ;$day++) {
@@ -52,20 +54,6 @@ else {
 			</td>
 		</tr>
 		<tr>
-			<td width="15%">Selecione um horário: </td>
-			<td width="85%">
-				<select name="horarios">
-				<option value="oito">08:00</option>
-				<option value="nove">09:00</option>
-				<option value="dez">10:00</option>
-				<option value="onze">11:00</option>
-				<option value="doze">12:00</option>
-				<option value="treze">13:00</option>
-				<option value="quinze">15:00</option>
-				<option value="desesseis">16:00</option>
-				<option value="desessete">17:00</option>
-				</select>
-			</td>
 		</tr>
 		<tr>
 			<td width="15%">
@@ -73,6 +61,7 @@ else {
 			</td>
         </tr>
 	  </table>
+	  </form>
 	  <?php echo "Agendamentos para o próprio dia somente por telefone: 9999-9999."; ?>
       <footer id="foot01"></footer><?php include "Footer.php"; ?>
     </div>
