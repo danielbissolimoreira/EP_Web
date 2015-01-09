@@ -4,7 +4,7 @@ CREATE TABLE Pessoa
 	EMAIL                VARCHAR(30) NOT NULL,
 	NOME                 VARCHAR(20) NOT NULL,
 	TELEFONE             INTEGER NOT NULL,
-	SENHA                VARCHAR(10) NULL
+	SENHA                VARCHAR(10) NOT NULL
 );
 
 ALTER TABLE Pessoa
